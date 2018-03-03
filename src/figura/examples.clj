@@ -1,5 +1,5 @@
 (ns figura.examples
-  (:require [figura.viewer        :refer [make-viewer set-model! load-mesh save-mesh]]
+  (:require [figura.viewer        :refer [make-viewer set-model! load-mesh]]
             [thi.ng.geom.aabb     :refer [aabb]]
             [thi.ng.geom.bezier   :as b]
             [thi.ng.geom.circle   :refer [circle]]
@@ -16,15 +16,13 @@
             [thi.ng.geom.vector   :as v :refer [vec2 vec3 V3Y]]
             [thi.ng.math.core     :as m]))
 
-;; https://ello.co/jackrusher
-
 (make-viewer)
 
 (set-model!
- (load-mesh "/Users/jack/src/quil-sketches/data/duck.stl" (aabb 2)))
+ (load-mesh "examples/duck.stl" (aabb 2)))
 
 (set-model!
- (load-mesh "/Users/jack/src/quil-sketches/homer-just-head.stl" (aabb 2)))
+ (load-mesh "examples/homer-just-head.stl" (aabb 2)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; WALL PANEL
 
@@ -67,7 +65,7 @@
     (v/vec3 (* qc (Math/cos pt)) (* qc (Math/sin pt)) (Math/sin qt))))
 
 (-> (ptf/sweep-mesh
-     (mapv cinquefoil (m/norm-range 400))     
+     (mapv cinquefoil (m/norm-range 400)) 
      (g/vertices (circle 0.75) 5)
      {:align? true :loop? true})
     set-model!)
